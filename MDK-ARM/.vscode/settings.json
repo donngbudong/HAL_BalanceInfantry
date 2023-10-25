@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "gimbal_task.h": "c",
+        "can_receive.h": "c",
+        "stm32f4xx.h": "c",
+        "device.h": "c"
+    }
+}
