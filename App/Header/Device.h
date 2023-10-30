@@ -16,7 +16,7 @@
 #include "remote_control.h"
 #include "can_receive.h"
 
-
+#include "system_task.h"
 #include "chassis_task.h"
 #include "gimbal_task.h"
 #include "shoot_task.h"

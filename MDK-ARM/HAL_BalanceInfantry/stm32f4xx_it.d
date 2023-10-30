@@ -34,4 +34,4 @@ hal_balanceinfantry\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4x
 hal_balanceinfantry\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hal_balanceinfantry\stm32f4xx_it.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 hal_balanceinfantry\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
-hal_balanceinfantry\stm32f4xx_it.o: ..\App\Driver\drv_usart.h
+hal_balanceinfantry\stm32f4xx_it.o: ../App/Driver/drv_usart.h

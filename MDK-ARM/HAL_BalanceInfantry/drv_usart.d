@@ -1,5 +1,5 @@
 hal_balanceinfantry\drv_usart.o: ..\App\Driver\drv_usart.c
-hal_balanceinfantry\drv_usart.o: ..\App\Header\Device.h
+hal_balanceinfantry\drv_usart.o: ../App/Header/Device.h
 hal_balanceinfantry\drv_usart.o: ../Core/Inc/main.h
 hal_balanceinfantry\drv_usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 hal_balanceinfantry\drv_usart.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -34,19 +34,20 @@ hal_balanceinfantry\drv_usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 hal_balanceinfantry\drv_usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hal_balanceinfantry\drv_usart.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hal_balanceinfantry\drv_usart.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-hal_balanceinfantry\drv_usart.o: ..\App\Algorithm\pid.h
-hal_balanceinfantry\drv_usart.o: ..\App\Device\HI229.h
+hal_balanceinfantry\drv_usart.o: ../App/Algorithm/pid.h
+hal_balanceinfantry\drv_usart.o: ../App/Device/HI229.h
 hal_balanceinfantry\drv_usart.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-hal_balanceinfantry\drv_usart.o: ..\App\Device\packet.h
-hal_balanceinfantry\drv_usart.o: ..\App\Header\System.h
-hal_balanceinfantry\drv_usart.o: ..\App\Driver\drv_usart.h
+hal_balanceinfantry\drv_usart.o: ../App/Device/packet.h
+hal_balanceinfantry\drv_usart.o: ../App/Header/System.h
+hal_balanceinfantry\drv_usart.o: ../App/Driver/drv_usart.h
 hal_balanceinfantry\drv_usart.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-hal_balanceinfantry\drv_usart.o: ..\App\Algorithm\crc.h
-hal_balanceinfantry\drv_usart.o: ..\App\Referee\referee.h
-hal_balanceinfantry\drv_usart.o: ..\App\Header\System.h
-hal_balanceinfantry\drv_usart.o: ..\App\Device\remote_control.h
-hal_balanceinfantry\drv_usart.o: ..\App\Device\can_receive.h
-hal_balanceinfantry\drv_usart.o: ..\App\Task\chassis_task.h
-hal_balanceinfantry\drv_usart.o: ..\App\Header\Device.h
-hal_balanceinfantry\drv_usart.o: ..\App\Task\gimbal_task.h
-hal_balanceinfantry\drv_usart.o: ..\App\Task\shoot_task.h
+hal_balanceinfantry\drv_usart.o: ../App/Algorithm/crc.h
+hal_balanceinfantry\drv_usart.o: ../App/Referee/referee.h
+hal_balanceinfantry\drv_usart.o: ../App/Header/System.h
+hal_balanceinfantry\drv_usart.o: ../App/Device/remote_control.h
+hal_balanceinfantry\drv_usart.o: ../App/Device/can_receive.h
+hal_balanceinfantry\drv_usart.o: ../App/Task/system_task.h
+hal_balanceinfantry\drv_usart.o: ../App/Task/chassis_task.h
+hal_balanceinfantry\drv_usart.o: ../App/Header/Device.h
+hal_balanceinfantry\drv_usart.o: ../App/Task/gimbal_task.h
+hal_balanceinfantry\drv_usart.o: ../App/Task/shoot_task.h

@@ -35,14 +35,14 @@ hal_balanceinfantry\vofa_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_h
 hal_balanceinfantry\vofa_task.o: ../Core/Inc/usart.h
 hal_balanceinfantry\vofa_task.o: ../Core/Inc/main.h
 hal_balanceinfantry\vofa_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-hal_balanceinfantry\vofa_task.o: ..\App\Device\can_receive.h
-hal_balanceinfantry\vofa_task.o: ..\App\Algorithm\pid.h
-hal_balanceinfantry\vofa_task.o: ..\App\Device\HI229.h
+hal_balanceinfantry\vofa_task.o: ../App/Device/can_receive.h
+hal_balanceinfantry\vofa_task.o: ../App/Algorithm/pid.h
+hal_balanceinfantry\vofa_task.o: ../App/Device/HI229.h
 hal_balanceinfantry\vofa_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-hal_balanceinfantry\vofa_task.o: ..\App\Device\packet.h
-hal_balanceinfantry\vofa_task.o: ..\App\Header\System.h
-hal_balanceinfantry\vofa_task.o: ..\App\Driver\drv_usart.h
+hal_balanceinfantry\vofa_task.o: ../App/Device/packet.h
+hal_balanceinfantry\vofa_task.o: ../App/Header/System.h
+hal_balanceinfantry\vofa_task.o: ../App/Driver/drv_usart.h
 hal_balanceinfantry\vofa_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-hal_balanceinfantry\vofa_task.o: ..\App\Algorithm\crc.h
-hal_balanceinfantry\vofa_task.o: ..\App\Referee\referee.h
-hal_balanceinfantry\vofa_task.o: ..\App\Header\System.h
+hal_balanceinfantry\vofa_task.o: ../App/Algorithm/crc.h
+hal_balanceinfantry\vofa_task.o: ../App/Referee/referee.h
+hal_balanceinfantry\vofa_task.o: ../App/Header/System.h

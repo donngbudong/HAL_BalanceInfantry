@@ -168,12 +168,14 @@ void SYSTEM_STATE_TASK(void const * argument)
     System_State();
     RC_State_Report();
 		IMU_State_Report();
+		State_LED();
 		vTaskDelay(1);
 
 //    vTaskDelayUntil(&currentTime, 1);//¾ø¶ÔÑÓÊ±
   }
   /* USER CODE END SYSTEM_STATE_TASK */
 }
+
 /* USER CODE BEGIN Header_CHASSIS_TASK */
 /**
 * @brief Function implementing the chassis_task thread.

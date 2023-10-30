@@ -1,6 +1,6 @@
 hal_balanceinfantry\shoot_task.o: ..\App\Task\shoot_task.c
 hal_balanceinfantry\shoot_task.o: ..\App\Task\shoot_task.h
-hal_balanceinfantry\shoot_task.o: ..\App\Device\can_receive.h
+hal_balanceinfantry\shoot_task.o: ../App/Device/can_receive.h
 hal_balanceinfantry\shoot_task.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 hal_balanceinfantry\shoot_task.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h
 hal_balanceinfantry\shoot_task.o: ../Drivers/CMSIS/Include/core_cm4.h
@@ -33,15 +33,15 @@ hal_balanceinfantry\shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_
 hal_balanceinfantry\shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 hal_balanceinfantry\shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hal_balanceinfantry\shoot_task.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-hal_balanceinfantry\shoot_task.o: ..\App\Algorithm\pid.h
-hal_balanceinfantry\shoot_task.o: ..\App\Device\HI229.h
+hal_balanceinfantry\shoot_task.o: ../App/Algorithm/pid.h
+hal_balanceinfantry\shoot_task.o: ../App/Device/HI229.h
 hal_balanceinfantry\shoot_task.o: ../Core/Inc/main.h
 hal_balanceinfantry\shoot_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 hal_balanceinfantry\shoot_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-hal_balanceinfantry\shoot_task.o: ..\App\Device\packet.h
-hal_balanceinfantry\shoot_task.o: ..\App\Header\System.h
-hal_balanceinfantry\shoot_task.o: ..\App\Driver\drv_usart.h
+hal_balanceinfantry\shoot_task.o: ../App/Device/packet.h
+hal_balanceinfantry\shoot_task.o: ../App/Header/System.h
+hal_balanceinfantry\shoot_task.o: ../App/Driver/drv_usart.h
 hal_balanceinfantry\shoot_task.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-hal_balanceinfantry\shoot_task.o: ..\App\Algorithm\crc.h
-hal_balanceinfantry\shoot_task.o: ..\App\Referee\referee.h
-hal_balanceinfantry\shoot_task.o: ..\App\Header\System.h
+hal_balanceinfantry\shoot_task.o: ../App/Algorithm/crc.h
+hal_balanceinfantry\shoot_task.o: ../App/Referee/referee.h
+hal_balanceinfantry\shoot_task.o: ../App/Header/System.h
