@@ -22,7 +22,7 @@ CHASSIS_Date_t Chassis ={
 void Chassis_Task(void)
 {
 	Chassis_GET_Info();
-	
+	CAN_cmd_RC(RC_Ctrl.rc.s1,RC_Ctrl.rc.s2);
 	if(RC_S1==1)
 	{
 		Chassis_Balance();

@@ -5,6 +5,8 @@
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
 
+static CAN_TxHeaderTypeDef  chassis_tx_message;
+static uint8_t              chassis_can_send_data[8];
 
 static CAN_TxHeaderTypeDef  gimbal_tx_message;
 static uint8_t              gimbal_can_send_data[8];
@@ -12,8 +14,8 @@ static uint8_t              gimbal_can_send_data[8];
 static CAN_TxHeaderTypeDef  shoot_tx_message;
 static uint8_t              shoot_can_send_data[8];
 
-static CAN_TxHeaderTypeDef  chassis_tx_message;
-static uint8_t              chassis_can_send_data[8];
+static CAN_TxHeaderTypeDef  rc_tx_message;
+static uint8_t              rc_can_send_data[8];
 
 static CAN_TxHeaderTypeDef  capacitance_tx_message;
 static uint8_t              capacitance_can_send_data[8];
@@ -46,10 +48,12 @@ void capacitance_date(super_capacitor_t *ptr, uint8_t *data)
 
 
 super_capacitor_t super_capacitor;
+uint8_t s1;
+uint8_t s2;
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-    CAN_RxHeaderTypeDef rx_header;
-    uint8_t rx_data[8];
+	CAN_RxHeaderTypeDef rx_header;
+	static uint8_t rx_data[8];
 	if(hcan->Instance==CAN1)
 	{
 	
@@ -63,16 +67,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
         case CAN_MF9025_2_ID:
 						CAN_MF9025_Decode(&Chassis.Motor_Date[MF9025_L], rx_data);                                    
 					break;
-//        case CAN_3508_M3_ID:
-//						CAN_Date_Decode(&Chassis.Motor_Date[CHAS_LB].Motor_Data.CAN_GetData, rx_data);                                    
-//					break;
-//        case CAN_3508_M4_ID:
-//						CAN_Date_Decode(&Chassis.Motor_Date[CHAS_RB].Motor_Data.CAN_GetData, rx_data);                                    
-//					break;
 				case GIM_YAW_ID:
 						CAN_Date_Decode(&Gimbal.YAW.Motor_Date.CAN_GetData, rx_data);                                    
 					break;
-				
+				case 0x567:
+						s1 = ((int16_t)rx_data[0]);
+						s2 = ((int16_t)rx_data[1]);
+					break;
 				case 0X666://³¬µç
 					capacitance_date(&super_capacitor,rx_data);
 					break;
@@ -90,16 +91,17 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 					break;
 
         case FRIC_L_ID:
-					CAN_Date_Decode(&Shoot.Motor_Date[FRIC_L].Motor_Data.CAN_GetData, rx_data);
+						CAN_Date_Decode(&Shoot.Motor_Date[FRIC_L].Motor_Data.CAN_GetData, rx_data);
 					break;
 
         case FRIC_R_ID:
-					CAN_Date_Decode(&Shoot.Motor_Date[FRIC_R].Motor_Data.CAN_GetData, rx_data);
-				break;
+						CAN_Date_Decode(&Shoot.Motor_Date[FRIC_R].Motor_Data.CAN_GetData, rx_data);
+					break;
 
         case DRIVER_ID:
 					CAN_Date_Decode(&Shoot.Motor_Date[DRIVER].Motor_Data.CAN_GetData, rx_data);
 					break;
+				
 		}
   }
 }
@@ -119,7 +121,10 @@ void CAN_cmd_capacitance(int16_t size)
 	
 	HAL_CAN_AddTxMessage(&hcan1, &capacitance_tx_message, capacitance_can_send_data, &send_mail_box);
 }
-
+/**
+* @brief µ×ÅÌµç»ú·¢ËÍ
+* @param 
+*/
 void CAN_cmd_chassis(int16_t Right, int16_t Left)
 {
 	uint32_t send_mail_box;
@@ -189,7 +194,24 @@ void CAN_cmd_shoot( int16_t shoot1,int16_t shoot2)
     HAL_CAN_AddTxMessage(&hcan2, &shoot_tx_message, shoot_can_send_data, &send_mail_box);
 }
 
+/**
+* @brief Ò£¿ØÆ÷·¢ËÍ
+* @param 
+*/
+void CAN_cmd_RC( int16_t s1,int16_t s2)
+{
+    uint32_t send_mail_box;
+    rc_tx_message.StdId = 0x567;
+    rc_tx_message.IDE = CAN_ID_STD;
+    rc_tx_message.RTR = CAN_RTR_DATA;
+    rc_tx_message.DLC = 0x02;
+    
+    rc_can_send_data[0] = s1;
+    rc_can_send_data[1] = s2;
 
+    HAL_CAN_AddTxMessage(&hcan1, &rc_tx_message, rc_can_send_data, &send_mail_box);
+
+}
 
 int Cacapacitance_Rong(void)
 {

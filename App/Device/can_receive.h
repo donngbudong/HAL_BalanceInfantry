@@ -145,6 +145,7 @@ void CAN_cmd_chassis(int16_t Right, int16_t Left);
 void CAN_cmd_gimbal_yaw(int16_t yaw);
 void CAN_cmd_gimbal_pitch(int16_t pitch,int16_t driver);
 void CAN_cmd_shoot( int16_t shoot1,int16_t shoot2);
+void CAN_cmd_RC( int16_t s1,int16_t s2);
 
 int Cacapacitance_Rong(void);
 
