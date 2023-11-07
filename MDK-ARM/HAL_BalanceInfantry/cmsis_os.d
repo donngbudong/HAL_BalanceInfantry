@@ -1,9 +1,9 @@
 hal_balanceinfantry\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
-hal_balanceinfantry\cmsis_os.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+hal_balanceinfantry\cmsis_os.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 hal_balanceinfantry\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 hal_balanceinfantry\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-hal_balanceinfantry\cmsis_os.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-hal_balanceinfantry\cmsis_os.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+hal_balanceinfantry\cmsis_os.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+hal_balanceinfantry\cmsis_os.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 hal_balanceinfantry\cmsis_os.o: ../Core/Inc/FreeRTOSConfig.h
 hal_balanceinfantry\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 hal_balanceinfantry\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

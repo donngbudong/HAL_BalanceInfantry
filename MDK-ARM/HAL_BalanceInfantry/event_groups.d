@@ -1,8 +1,8 @@
 hal_balanceinfantry\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-hal_balanceinfantry\event_groups.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+hal_balanceinfantry\event_groups.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 hal_balanceinfantry\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-hal_balanceinfantry\event_groups.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-hal_balanceinfantry\event_groups.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+hal_balanceinfantry\event_groups.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+hal_balanceinfantry\event_groups.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 hal_balanceinfantry\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
 hal_balanceinfantry\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 hal_balanceinfantry\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

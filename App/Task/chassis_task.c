@@ -25,7 +25,7 @@ uint8_t  s22= 2;
 void Chassis_Task(void)
 {
 	Chassis_GET_Info();
-	CAN_cmd_RC(s11,s22);
+//	CAN_cmd_RC(s11,s22);
 	if(RC_S1==1)
 	{
 		Chassis_Balance();
