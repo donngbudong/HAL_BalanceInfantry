@@ -88,6 +88,7 @@ void MF_9025_Init(void);
 		
 void MF_9028_Balance_Kp(PID_Loop_t *str);
 void MF_9028_Balance_Kd(PID_Loop_t *str);
+void MF_9028_PID_56(PID_Loop_t *str);
 void MF_9028_Chasssis_OUT(PID_Loop_t *str);
 
 void GM_6020_Init(void);

@@ -65,8 +65,10 @@ float PID_Position(PID_Loop_t *pid, float target, float actual)
 	return pid->PID_Output;
 }
 
-PID_Parameter_t Balance_Kp_Param = {55,	0,	0};
-PID_Parameter_t Balance_Kd_Param = {3	,	0,	0};
+PID_Parameter_t Param_3 = {50,	0,	0};
+PID_Parameter_t Param_4 = {2	,	0,	0};
+PID_Parameter_t Param_5 = {1,	0,	20};
+PID_Parameter_t Param_6 = {2	,	0,	0};
 
 PID_Parameter_t Chasssis_OUT = {1,0,0};
 
@@ -161,6 +163,9 @@ void MF_9025_Init(void)
 	Chassis.Motor_Info.Motor_Type = MF_9025_Right;
 	MF_9028_Balance_Kp(&Chassis.PID.PID_b3);
 	MF_9028_Balance_Kd(&Chassis.PID.PID_b4);
+	MF_9028_PID_56(&Chassis.PID.PID_b5);
+	MF_9028_PID_56(&Chassis.PID.PID_b6);
+
 	MF_9028_Chasssis_OUT(&Chassis.PID.Chasssis_OUT);
 
 }
@@ -195,6 +200,19 @@ void MF_9028_Balance_Kd(PID_Loop_t *str)
   str->PID_Err_Dead = 0;
 }
 
+/**
+ * @brief PID限幅设置 
+ * @param 
+ */
+void MF_9028_PID_56(PID_Loop_t *str)
+{
+  /* 这里只针对速度环 */
+  str->I_Limit_Max = 2000;
+  str->PID_I_Out_Max = 0; 
+  str->PID_P_Out_Max = 16000;
+  str->PID_Output_Max = 12000;
+  str->PID_Err_Dead = 0;
+}
 /**
  * @brief PID限幅设置 
  * @param 

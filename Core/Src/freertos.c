@@ -119,7 +119,7 @@ void MX_FREERTOS_Init(void) {
   system_state_taHandle = osThreadCreate(osThread(system_state_ta), NULL);
 
   /* definition and creation of chassis_task */
-  osThreadDef(chassis_task, CHASSIS_TASK, osPriorityHigh, 0, 256);
+  osThreadDef(chassis_task, CHASSIS_TASK, osPriorityRealtime, 0, 256);
   chassis_taskHandle = osThreadCreate(osThread(chassis_task), NULL);
 
   /* definition and creation of gimbal_task */
@@ -168,7 +168,7 @@ void SYSTEM_STATE_TASK(void const * argument)
     System_State();
     RC_State_Report();
 		IMU_State_Report();
-		State_LED();
+//		State_LED();
 		vTaskDelay(1);
 
 //    vTaskDelayUntil(&currentTime, 1);//绝对延时
@@ -191,8 +191,9 @@ void CHASSIS_TASK(void const * argument)
   for(;;)
   {
     currentTime = xTaskGetTickCount();//当前系统时间
+		IMU_get();
     Chassis_Task();
-    vTaskDelayUntil(&currentTime, 3);//绝对延时    
+    vTaskDelayUntil(&currentTime, 2);//绝对延时    
   }
   /* USER CODE END CHASSIS_TASK */
 }
@@ -214,9 +215,9 @@ void GIMBAL_TASK(void const * argument)
   {
 		currentTime = xTaskGetTickCount();//当前系统时间
 		IMU_get();
-		Gimbal_Task();
+//		Gimbal_Task();
 //		HAL_UART_Transmit(&huart4,&test[0],1,100);
-    vTaskDelayUntil(&currentTime, 3);//绝对延时   
+    vTaskDelayUntil(&currentTime, 1);//绝对延时   
 	}
   /* USER CODE END GIMBAL_TASK */
 }

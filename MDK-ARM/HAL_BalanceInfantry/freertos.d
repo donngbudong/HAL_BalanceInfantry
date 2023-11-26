@@ -1,7 +1,7 @@
 hal_balanceinfantry\freertos.o: ../Core/Src/freertos.c
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-hal_balanceinfantry\freertos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-hal_balanceinfantry\freertos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+hal_balanceinfantry\freertos.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+hal_balanceinfantry\freertos.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 hal_balanceinfantry\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -41,7 +41,7 @@ hal_balanceinfantry\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 hal_balanceinfantry\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 hal_balanceinfantry\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hal_balanceinfantry\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-hal_balanceinfantry\freertos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+hal_balanceinfantry\freertos.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
@@ -50,11 +50,11 @@ hal_balanceinfantry\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/inclu
 hal_balanceinfantry\freertos.o: ../App/Header/Device.h
 hal_balanceinfantry\freertos.o: ../App/Algorithm/pid.h
 hal_balanceinfantry\freertos.o: ../App/Device/HI229.h
-hal_balanceinfantry\freertos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+hal_balanceinfantry\freertos.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 hal_balanceinfantry\freertos.o: ../App/Device/packet.h
 hal_balanceinfantry\freertos.o: ../App/Header/System.h
 hal_balanceinfantry\freertos.o: ../App/Driver/drv_usart.h
-hal_balanceinfantry\freertos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+hal_balanceinfantry\freertos.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 hal_balanceinfantry\freertos.o: ../App/Algorithm/crc.h
 hal_balanceinfantry\freertos.o: ../App/Referee/referee.h
 hal_balanceinfantry\freertos.o: ../App/Header/System.h
