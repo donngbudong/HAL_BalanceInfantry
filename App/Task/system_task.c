@@ -1,13 +1,45 @@
 #include "system_task.h"
 #include "tim.h"
+#include "System.h"
 
 
-#define ONE_PULSE        (142)                           //1 
-#define ZERO_PULSE       (67)                           //0 
-#define RESET_PULSE      (80)                           //80 
-#define LED_NUMS         (6)                            //led 
-#define LED_DATA_LEN     (24)                           //led 
-#define WS2812_DATA_LEN  (LED_NUMS*LED_DATA_LEN)        //ws2812
+
+
+
+
+Sys_Info_t System = {
+    .Rc_State  = RC_LOST,
+    .Imu_State = IMU_LOST,
+    .System_State = SYSTEM_LOST,
+};
+
+uint64_t Remote_time = 0;//遥控器
+uint64_t Imu_time = 0;//裁判系统
+
+//设备连接初始化
+void Time_Init(void)
+{
+  Remote_time = micros();
+  Imu_time = micros();
+}
+
+
+
+void System_State(void)
+{
+    if(System.Rc_State ==RC_ERR || System.Imu_State ==IMU_ERR)
+  {
+    System.System_State = SYSTEM_ERR;
+  } 
+    if(System.Rc_State ==RC_NORMAL && System.Imu_State ==IMU_NORMAL)
+  {
+    System.System_State = SYSTEM_NORMAL;
+  }
+  if(System.Rc_State ==RC_LOST || System.Imu_State ==IMU_LOST)
+  {
+    System.System_State = SYSTEM_LOST;
+  }
+}
 
 
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
