@@ -19,13 +19,11 @@ CHASSIS_Date_t Chassis ={
  * @brief µ×ÅÌ×Ü¿Ø
  * @param 
  */
-uint8_t  s11= 1;
-uint8_t  s22= 2;
-
 void Chassis_Task(void)
 {
 	Chassis_GET_Info();
-	CAN_cmd_RC(s11,s22);
+//	CAN_cmd_RC1(RC_CH0,RC_CH1,RC_CH2,RC_CH3);
+//	CAN_cmd_RC2(RC_S1,RC_S2,RC_SW,RC_Ctrl.kb.key);
 	if(RC_S1==1)
 	{
 		Chassis_Balance();

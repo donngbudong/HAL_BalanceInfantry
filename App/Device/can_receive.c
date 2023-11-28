@@ -48,8 +48,6 @@ void capacitance_date(super_capacitor_t *ptr, uint8_t *data)
 
 
 super_capacitor_t super_capacitor;
-uint8_t s1;
-uint8_t s2;
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
 	CAN_RxHeaderTypeDef rx_header;
@@ -69,10 +67,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 					break;
 				case GIM_YAW_ID:
 						CAN_Date_Decode(&Gimbal.YAW.Motor_Date.CAN_GetData, rx_data);                                    
-					break;
-				case 0x567:
-						s1 = ((int16_t)rx_data[0]);
-						s2 = ((int16_t)rx_data[1]);
 					break;
 				case 0X666://³¬µç
 					capacitance_date(&super_capacitor,rx_data);
@@ -100,6 +94,19 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 
         case DRIVER_ID:
 					CAN_Date_Decode(&Shoot.Motor_Date[DRIVER].Motor_Data.CAN_GetData, rx_data);
+					break;
+				case 0x567:
+					RC_Ctrl.rc.ch0 = ((int16_t)(rx_data[0] << 8	| rx_data[1]));
+					RC_Ctrl.rc.ch1 = ((int16_t)(rx_data[2] << 8 | rx_data[3]));
+					RC_Ctrl.rc.ch2 = ((int16_t)(rx_data[4] << 8 | rx_data[5]));
+					RC_Ctrl.rc.ch3 = ((int16_t)(rx_data[6] << 8 | rx_data[7]));
+					break;
+				case 0x520:
+					RC_Ctrl.rc.s1 = ((uint8_t)(rx_data[0]));
+					RC_Ctrl.rc.s2 = ((uint8_t)(rx_data[1]));
+
+					RC_Ctrl.rc.sw = ((int16_t)(rx_data[2] << 8 	| rx_data[3]));
+					RC_Ctrl.kb.key = ((int16_t)(rx_data[4] << 8 | rx_data[5]));
 					break;
 				
 		}
@@ -198,21 +205,48 @@ void CAN_cmd_shoot( int16_t shoot1,int16_t shoot2)
 * @brief Ò£¿ØÆ÷·¢ËÍ
 * @param 
 */
-void CAN_cmd_RC( int16_t s1,int16_t s2)
+void CAN_cmd_RC1(int16_t ch0,int16_t ch1,int16_t ch2,int16_t ch3)
 {
     uint32_t send_mail_box;
     rc_tx_message.StdId = 0x567;
     rc_tx_message.IDE = CAN_ID_STD;
     rc_tx_message.RTR = CAN_RTR_DATA;
-    rc_tx_message.DLC = 0x02;
+    rc_tx_message.DLC = 0x08;
+    
+    rc_can_send_data[0] = ch0 >> 8;
+    rc_can_send_data[1] = ch0;
+		rc_can_send_data[2] = ch1 >> 8;
+		rc_can_send_data[3] = ch1;
+		rc_can_send_data[4] = ch2 >> 8;
+		rc_can_send_data[5] = ch2;
+		rc_can_send_data[6] = ch3 >> 8;
+		rc_can_send_data[7] = ch3;
+
+    HAL_CAN_AddTxMessage(&hcan2, &rc_tx_message, rc_can_send_data, &send_mail_box);
+
+}
+/**
+* @brief Ò£¿ØÆ÷·¢ËÍ
+* @param 
+*/
+void CAN_cmd_RC2(uint8_t s1,uint8_t s2,int16_t sw,uint16_t key)
+{
+    uint32_t send_mail_box;
+    rc_tx_message.StdId = 0x520;
+    rc_tx_message.IDE = CAN_ID_STD;
+    rc_tx_message.RTR = CAN_RTR_DATA;
+    rc_tx_message.DLC = 0x06;
     
     rc_can_send_data[0] = s1;
     rc_can_send_data[1] = s2;
+		rc_can_send_data[2] = sw >> 8;
+		rc_can_send_data[3] = sw;
+		rc_can_send_data[4] = key >> 8;
+		rc_can_send_data[5] = key;
 
-    HAL_CAN_AddTxMessage(&hcan1, &rc_tx_message, rc_can_send_data, &send_mail_box);
+    HAL_CAN_AddTxMessage(&hcan2, &rc_tx_message, rc_can_send_data, &send_mail_box);
 
 }
-
 int Cacapacitance_Rong(void)
 {
 	  return super_capacitor.rong;
