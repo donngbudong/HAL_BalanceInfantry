@@ -1,8 +1,8 @@
 hal_balanceinfantry\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
-hal_balanceinfantry\list.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+hal_balanceinfantry\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 hal_balanceinfantry\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-hal_balanceinfantry\list.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-hal_balanceinfantry\list.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+hal_balanceinfantry\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+hal_balanceinfantry\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 hal_balanceinfantry\list.o: ../Core/Inc/FreeRTOSConfig.h
 hal_balanceinfantry\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 hal_balanceinfantry\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

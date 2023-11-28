@@ -33,14 +33,17 @@ typedef struct
 	CAN_MF9025_DATE_T Motor_Date[CHAS_MOTOR_CNT];		//电机数据
 	PID_Chassis_Info_t PID;													//PID
 	PID_Type_t PID_Type;														//PID类型
+	float torque_const;								//转矩常数
 
 	float follow_gimbal_zero;												//跟随云台零点
 
 	float speed_x,target_speed_x;										//底盘速度
 	float pose_x,target_pose_x;											//底盘位移	
 	float Pitch;																		//底盘倾角
+	float Yaw;																			//底盘旋转偏角
+	
 	float Gyo_y;																		//底盘倾角角速度
-	float Yaw;																			//底盘旋转偏角由yaw轴6020确定
+//	float Yaw;																			//底盘旋转偏角由yaw轴6020确定
 	float omega_z;																	//底盘旋转线速度
 
   float X_Speed_k ,Y_Speed_k,Z_Speed_k; 						//遥控->速度 变化的幅度调节因子

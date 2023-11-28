@@ -80,6 +80,7 @@ typedef __packed struct
 /*MF9025接收到的数据*/
 typedef struct
 {
+	uint8_t Cmd; // 命令字节
 	int8_t Temp;
 	int16_t Speed;
 	int16_t Torque_Current;
@@ -112,8 +113,10 @@ typedef struct
 //}Motor_MF9025_t;
 
 extern IMU_GET_DATA_t	 IMU_Get_Data;
-extern PID_Parameter_t Balance_Kp_Param;
-extern PID_Parameter_t Balance_Kd_Param;
+extern PID_Parameter_t Param_3;
+extern PID_Parameter_t Param_4;
+extern PID_Parameter_t Param_5;
+extern PID_Parameter_t Param_6;
 extern PID_Parameter_t Chasssis_OUT;
 
 extern PID_Parameter_t PID_Speed_Param[MOTOR_TYPE_CNT][PID_TYPE_CNT];

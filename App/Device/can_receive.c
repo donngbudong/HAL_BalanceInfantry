@@ -23,6 +23,7 @@ static uint8_t              capacitance_can_send_data[8];
 void CAN_MF9025_Decode(CAN_MF9025_DATE_T *str,uint8_t *Date)
 {
 	str->Last_Encoder = str->Encoder;
+	str->Cmd						= (Date)[0];
 	str->Temp					  = (Date)[1];
 	str->Torque_Current = (int16_t)((Date)[3] << 8 | (Date)[2]);
 	str->Speed 					= (int16_t)((Date)[5] << 8 | (Date)[4]);

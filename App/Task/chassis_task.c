@@ -21,9 +21,14 @@ CHASSIS_Date_t Chassis ={
  */
 void Chassis_Task(void)
 {
+//	Chassis.omega_z = 2;
 	Chassis_GET_Info();
+<<<<<<< HEAD
 //	CAN_cmd_RC1(RC_CH0,RC_CH1,RC_CH2,RC_CH3);
 //	CAN_cmd_RC2(RC_S1,RC_S2,RC_SW,RC_Ctrl.kb.key);
+=======
+//	CAN_cmd_RC(s11,s22);
+>>>>>>> a1887dfadba1af1307e6a29e85fecda11b172d92
 	if(RC_S1==1)
 	{
 		Chassis_Balance();
@@ -42,8 +47,10 @@ void Chassis_Task(void)
 */
 void Chassis_GET_Info(void)
 {
+	Chassis.torque_const = 8;		//转矩系数
 	Chassis.State = System.System_State;
 	Chassis.Pitch = IMU_Get_Data.IMU_Eular[1];
+	Chassis.Yaw = IMU_Get_Data.IMU_Eular[2];
 	Chassis.Gyo_y		= IMU_Get_Data.IMU_Gyo[0]/10;//除10
 	Chassis.speed_x = -(Chassis.Motor_Date[0].Speed - Chassis.Motor_Date[1].Speed) /57.29578f*Diameter_weel/2.0f/2.0f ;
 	Chassis.omega_z =  (Chassis.Motor_Date[0].Speed + Chassis.Motor_Date[1].Speed) /57.29578f*Diameter_weel/2.0f/2.0f;
@@ -57,19 +64,57 @@ void Chassis_GET_Info(void)
 
 void Chassis_Balance(void)
 {
-	PID_Position(&Chassis.PID.PID_b3,-4,Chassis.Pitch);
+	/*平衡*/
+	PID_Position(&Chassis.PID.PID_b3,-3.8,Chassis.Pitch);
 	PID_Position(&Chassis.PID.PID_b4,0,Chassis.Gyo_y);
-	
-	Chassis.torque_balance = Chassis.PID.PID_b3.PID_Output+Chassis.PID.PID_b4.PID_Output;
-	
+	/*旋转*/
+	PID_Position(&Chassis.PID.PID_b5,0,Chassis.Yaw);
+	PID_Position(&Chassis.PID.PID_b6,Chassis.PID.PID_b5.PID_Output,Chassis.omega_z);
+
+	Chassis.torque_balance = (Chassis.PID.PID_b3.PID_Output+Chassis.PID.PID_b4.PID_Output) * Chassis.torque_const;
+	Chassis.torque_revolve = -Chassis.PID.PID_b6.PID_Output * Chassis.torque_const;
 	PID_Position(&Chassis.PID.Chasssis_OUT,Chassis.torque_balance,0);
+//	Chassis.iqControl[0] = -Chassis.PID.Chasssis_OUT.PID_Output + Chassis.torque_revolve;
+//	Chassis.iqControl[1] =  Chassis.PID.Chasssis_OUT.PID_Output + Chassis.torque_revolve;
+//	Chassis.iqControl[0] = Chassis.torque_revolve;
+//	Chassis.iqControl[1] = Chassis.torque_revolve;
 	Chassis.iqControl[0] = -Chassis.PID.Chasssis_OUT.PID_Output;
 	Chassis.iqControl[1] =  Chassis.PID.Chasssis_OUT.PID_Output;
-
 }
 
 
+/**
+  * @brief  底盘正常模式
+  */
+void Chassis_Normal(void)
+{
+//	PID_LQR_k2.Ki = 0.01f;//0.01f;
+//	PID_LQR_k2.max_iout = 25.0f;//25.0f;
+//	chassis_ctrl.follow_gimbal_zero=CHASSIS_FOLLOW_GIMBAL_ANGLE_ZERO;
+	Chassis.target_pose_x=Chassis.pose_x;
+//	Chassis.flag_clear_pose = 0;
+//	Chassis.target_speed_x=fabs(arm_cos_f32(PID_LQR_k5.error[0])) * speed_control(chassis_ctrl.move_speed,chassis_ctrl.move_direction);
+	
 
+	PID_Position(&Chassis.PID.PID_b1, Chassis.pose_x, Chassis.target_pose_x);
+	PID_Position(&Chassis.PID.PID_b2, Chassis.speed_x, Chassis.target_speed_x);
+	PID_Position(&Chassis.PID.PID_b3, Chassis.Pitch, 0);
+	PID_Position(&Chassis.PID.PID_b4, Chassis.Gyo_y, 0);
+//	PID_Position(&Chassis.PID.PID_b5, Chassis.angle_z, 0);
+	
+
+//	PID_Position(&Chassis.PID.PID_b6, Chassis.omega_z, Chassis.PID.PID_b5.PID_Output);
+	
+	
+	Chassis.torque_speed = (-Chassis.PID.PID_b1.PID_Output - Chassis.PID.PID_b2.PID_Output) * Chassis.torque_const;
+	Chassis.torque_balance = (- Chassis.PID.PID_b3.PID_Output - Chassis.PID.PID_b4.PID_Output) * Chassis.torque_const;
+//	Chassis.torque_omega = PID_LQR_k6.out * chassis_ctrl.torque_const;
+	
+		
+	PID_Position(&Chassis.PID.Chasssis_OUT, 0, Chassis.torque_speed + Chassis.torque_balance);
+	Chassis.iqControl[0] = -Chassis.PID.Chasssis_OUT.PID_Output;
+	Chassis.iqControl[1] =  Chassis.PID.Chasssis_OUT.PID_Output;
+}
 
 
 /**
@@ -89,8 +134,11 @@ void Chassis_InitPID(void)
 void Chassis_PID_Set(PID_Chassis_Info_t *str)
 {
   static int length = sizeof(PID_Parameter_t);
-	memcpy(&(str->PID_b3),&Balance_Kp_Param,length);
-	memcpy(&(str->PID_b4),&Balance_Kd_Param,length);
+	
+	memcpy(&(str->PID_b3),&Param_3,length);
+	memcpy(&(str->PID_b4),&Param_4,length);
+	memcpy(&(str->PID_b5),&Param_5,length);
+	memcpy(&(str->PID_b6),&Param_6,length);
 	memcpy(&(str->Chasssis_OUT),&Chasssis_OUT,length);
 };
 
